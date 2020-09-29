@@ -1,26 +1,31 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import './App.scss';
+import { useSelector, useDispatch } from 'react-redux';
+import { InitialState} from "./context/types";
+import {ACTIONS_TYPES} from "./context/actions";
+import Header from "./components/header/header";
+import Body from "./components/body/body";
+import Footer from "./components/footer/footer";
+import "./App.scss";
 
 const App: React.FC = () => {
+    const counter = useSelector((state: InitialState) => {
+        return state.counter;
+    });
+    const dispatch = useDispatch();
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+             <div className="main">
+               <h1>counter is: {counter} </h1>
+                 <button onClick={()=>dispatch({type: ACTIONS_TYPES.INCREMENT})}>INCREMENT</button>
+                 <button onClick={()=>dispatch({type: ACTIONS_TYPES.DECREMENT})}>DECREMENT</button>
+                 <Header/>
+                 <Body/>
+                 <Footer/>
+
+             </div>
+
+
   );
-}
+};
 
 export default App;

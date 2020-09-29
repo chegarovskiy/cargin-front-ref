@@ -1,0 +1,90 @@
+@import '../../styles/variables';
+
+.header-wrapper {
+  color: $app-color-5;
+  min-height: $header-default-height;
+  width: 100vw;
+  background: $app-color-header-rgba;
+  //position: fixed;
+  display: flex;
+  justify-content: center;
+
+  .header-menu {
+    cursor: pointer;
+    display: grid;
+    width: $header-menu-max-width;
+    max-width: $header-menu-max-width;
+    grid-template-columns: repeat(4, auto);
+    grid-column-gap: 10px;
+    justify-items: center;
+    align-items: center;
+    //justify-self: center;
+
+    .header-logo {
+      > i {
+        //line-height: 10px;
+        //font-size: 19px;
+        color: $app-background-rgba-1;
+      }
+    }
+    .change-icon {
+      box-sizing: border-box;
+
+    }
+    .toggle-icons {
+      perspective: 27px;
+      width: 50px;
+      height: 50px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      .div-shop {
+        position: absolute;
+      }
+      .div-close {
+        opacity: 0;
+        position: absolute;
+      }
+      .hide-icon {
+        animation-name: hide-icon-animation;
+        animation-duration: .7s;
+        opacity: 0;
+        animation-fill-mode: forwards;
+      }
+      .show-icon {
+        animation-name: show-icon-animation;
+        animation-duration: .7s;
+        animation-delay: .35s;
+        animation-fill-mode: both;
+      }
+
+      @keyframes show-icon-animation {
+        0% {
+          opacity: 0;
+          transform: translateZ(-10px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateZ(0px);
+        }
+      }
+
+      @keyframes hide-icon-animation {
+        0% {
+          opacity: 1;
+          transform: translateZ(0px);
+        }
+        100% {
+          opacity: 0;
+          transform: translateZ(-10px);
+        }
+      }
+    }
+
+  }
+}
+.icon-header {
+  font-size: $header-icons-font;
+  color: white;
+}
